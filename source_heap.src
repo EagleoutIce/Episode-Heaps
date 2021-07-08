@@ -1,7 +1,8 @@
 \input{preamble}
 
 \begin{document}
-\section{Initiales}
+\section{Arten von Heaps}
+\subsection{Initiales}
 \SidebarCite{gh:episode-recursion}
 \SidebarCite{gh:tikzpingus}
 \begin{frame}{Disclaimer}
@@ -9,11 +10,11 @@
         \itemsep12pt
         \item Dieser \say{Heap} hat nichts mit dem aus der Rekursions-\allowbreak Episode zu tun!
         \item Wir beschränken uns auf Heap-\textit{Bäume}.
+        \item Wir ignorieren Rotationen.
     \end{itemize}
 \end{frame}
 \SidebarReset
 
-\section{Arten von Heaps}
 
 \subsection{Max-Heap vs. Min-Heap}
 \savebox\pinguC{\tikz[baseline=-.6ex]{\fill[shadeA] circle[radius=2.15pt];}~~\thinspace}
@@ -21,7 +22,7 @@
 \begin{columns}[c]
     \begin{column}{.45\linewidth}
 \onslide<2->{\centering\heap{[4[2[-2][-3]][1]]}\bigskip\par}
-    \onslide<4->{\color{gray}\hskip-\wd\pinguC\relax\usebox\pinguC\textbf{Max}-Heap\par
+    \onslide<4->{\color{gray}\onslide<6->{\hskip-\wd\pinguC\relax\usebox\pinguC}\textbf{Max}-Heap\par
     {\textcolor{gray}{\scriptsize\(\text{Eltern} \geq \text{Kinder}\)}}}
     \end{column} \begin{column}{.45\linewidth}
 \onslide<3->{\centering\heap{[-3[-2[2][4]][1]]}\bigskip\par}
@@ -84,6 +85,7 @@
     \end{itemize}
     \item Sogar ein Binärbaum! \begin{itemize}
         \item Jeder Knoten hat maximal zwei Nachfolger.
+        \item Wir konzentrieren uns auf
     \end{itemize}
     \item Sie lassen sich als rekursive Struktur auffassen.
 \end{itemize}
@@ -98,17 +100,162 @@
 
 \section{Operationen}
 
-\savebox\pinguA{\heap{[3,name=3[4,name=4,edge={shadeA},edge label={node[midway, above left,paletteA] {\faFlash\ Max-Heap}}][2,name=2]] \pgfresetboundingbox
-\path[use as bounding box] (4|-3)++(-.33333em,.33333em) rectangle (2.south east);}}
+\subsection{Heapify}
+\savebox\pinguA{\heap{[3,name=3[4,name=4,edge={shadeA},edge label={node[midway, above left,paletteA] {\faFlash\ Max-Heap}}][2,name=2]]}}
+\savebox\pinguB{\tikz{\pingu[left wing wave, pride flag left,sunglasses,tie=paletteD]}}%
 \begin{frame}{Heapify}
-\centering\onslide<2->{\usebox\pinguA}\onslide<3->{\qquad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) -- (.75,0);}}\qquad\heap{[4[3][2]]\pgfresetboundingbox
-    \path[use as bounding box] (4|-3)++(-.33333em,.33333em) rectangle (2.south east);}}
+\centering\onslide<2->{\usebox\pinguA}\onslide<3->{\qquad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) -- (.75,0);}}\qquad\heap{[4[3][2]]}}
 \vspace*{3em}
 \begin{itemize}
     \item<4-> \textit{Up}-Heapify: Prüft Blätter \(\to\) Wurzel.
     \item<5-> \textit{Down}-Heapify: Prüft Wurzel \(\to\) Blätter.
 \end{itemize}
+\begin{tikzpicture}[remember picture,overlay]
+    \onslide<6->{%
+        \node[above right=.25cm,yshift=.33cm,scale=.6] (pingu) at (current page.south west) {\usebox\pinguB};
+        \node[above=1mm,scale=.75,text width=4.5cm,align=center,font=\footnotesize\sffamily] at(pingu.north) {%
+            Herstellung der Heap-Eigenschaft durch Vertauschungen!%
+        };
+    }
+\end{tikzpicture}
 \end{frame}
 
+\subsection{Insert/Put}
+\savebox\pinguA{\heap{[8[6[3][,lblob=shadeD,edge=shadeD,minimum size=0pt,inner sep=6pt]][5]]}}
+\savebox\pinguB{\tikz{\pingu[hat=paletteC!89!black,eyes wink,heart=lgray,hat ribbon=paletteC]}}%
+\begin{frame}{Insert\,/\,Put}
+\begin{itemize}
+    \itemsep8pt
+    \item<2-> Auf der niedersten Ebene, so weit links wie möglich.
+    \item<3-> Anschließend: \textit{heapify}.
+\end{itemize}
+\vspace*{3em}\par
+\centering
+\downsize\linewidth{$\color{gray}\onslide<4->{\underbrace{\strut\color{black}\onslide<4->{\usebox\pinguA}\onslide<5->{\qquad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) to[edge node={node[above=4pt,font=\sbfamily]{9}}] (.75,0);}}}}_{\text{\textcolor{gray}{\LARGE\strut Insert}}}}$~$\color{gray}\onslide<5->{\underbrace{\strut\color{black}\onslide<5->{{\heap{[8[6,name=6[3][9,name=9,edge=shadeA]][5]]\draw[gray,ultra thick,Kite-Kite] (9) to[bend right=45] (6);}}}\onslide<6->{\qquad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) -- (.75,0);}}~{\heap{[8,name=8[9,name=9,edge=shadeA[3][6]][5]]\draw[gray,ultra thick,Kite-Kite] (9) to[bend left=45] (8);}}}\onslide<7->{\qquad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) -- (.75,0);}}~{\heap{[9[8[3][6]][5]]}}}}_{\text{\textcolor{gray}{\LARGE\strut Heapify}}}}$}
+\begin{tikzpicture}[overlay,remember picture]
+    \onslide<8->{%
+        \node[below left=.25cm,yshift=.8cm,scale=.6] (pingu) at (current page.north east) {\rotatebox[origin=c]{180}{\usebox\pinguB}};
+        \node[left,scale=.6,text width=6.75cm,align=center,yshift=-.33cm] at (pingu.west) {Ist die unterste Ebene voll, so erschaffen wir einfach eine Neue!};
+    }
+\end{tikzpicture}
+\end{frame}
+
+\subsection{Remove/Get}
+\savebox\pinguA{\heap{[9,name=9[8[3][6,name=6]][5]]\draw[gray,ultra thick,-Kite] (6) to[bend right=5] (9);}}
+\begin{frame}{Remove\,/\,Get}
+\begin{itemize}
+    \itemsep8pt
+    \item<2-> \vphantom{g}Ersetze oberstes Element durch unterstes.
+    \item<3-> Anschließend: \textit{heapify}.
+\end{itemize}
+\vspace*{3em}\par
+\centering
+\downsize{.75\linewidth}{$\color{gray}\onslide<4->{\underbrace{\strut\color{black}\onslide<4->{\usebox\pinguA}\onslide<5->{\qquad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) to[edge node={node[above=4pt,font=\sbfamily]{$\langle$9$\rangle$}}] (.75,0);}}}}_{\text{\textcolor{gray}{\LARGE\strut Remove}}}}$~$\color{gray}\onslide<5->{\underbrace{~~\strut\color{black}\onslide<5->{{\heap{[6,name=6[8,name=8,edge=shadeA[3]][5]]\draw[gray,ultra thick,Kite-Kite] (8) to[bend left=45] (6);}}}\onslide<6->{\quad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) -- (.75,0);}}\quad{\heap{[8[6[3]][5]]}}}}_{\text{\textcolor{gray}{\LARGE\strut Heapify}}}}$}
+\end{frame}
+
+\subsection{Insert/Put}
+\begin{frame}{Weitere Operationen}
+    \begin{itemize}[<+(1)->]
+        \itemsep15pt
+        \item Find\,/\,Extract Min\,/\,Max
+        \item Replace (one node with another)
+        \item Meld\,/\,Join
+    \end{itemize}
+\end{frame}
+
+\section{Arrays}
+\savebox\pinguA{\tikz{\pingu[right wing shock,left wing raise,straw hat,pants=paletteD!50!black]}}%
+\begin{frame}{Erstaunliche Erkentnisse}
+    \onslide<2->{\begin{center}
+        \textit{Annahmen}:\smallskip\par
+        Heap ist bis auf letzte Ebene komplett gefüllt.\\
+        Letzte Ebene füllt sich von links an.\bigskip
+    \end{center}}
+\begin{columns}[c]
+\begin{column}{.55\linewidth}
+\footnotesize\begin{itemize}
+    \item<5-> Jede gefüllte Ebene \(i\) enthält \(2^i\) Elemente.
+    \item<6-> Die Nummerierung nach Breitensuche erlaubt Adressierung!
+    \item<8-> Das linke Kind von \(n\) ist \(2 \cdot n + 1\), das rechte \(2 \cdot n + 2\).
+    \item<9-> Der Elternknoten von \(n\) ist \(\lfloor \frac{n - 1}{2}\rfloor\)
+\end{itemize}
+\end{column}
+\begin{column}{.35\linewidth}
+\onslide<3->{\heap[s sep=3em-level*.5em]{[18,name=a[7,name=b[3,name=c[3,name=d][2,name=e]][6,name=f]][-2,name=g[-1,name=h][-2,name=i]]]%
+\pgfonlayer{background}
+\onslide<4->{\foreach[count=\i] \x in {a,b,c,d} {
+        \node[gray,font=\sbfamily] (dn\i) at(\x-|4,0) {\the\numexpr\i-1\relax};
+        \draw[lgray!90!white,densely dashed, very thick] (dn\i.west) -- (d.west|-dn\i.west) -- ++(-2.5mm,0);
+}}
+\onslide<7->{\foreach[count=\i] \x in {a, b, g, c, f, h, i, d, e} {
+        \node[paletteA,font=\sbfamily,left=.25mm] at (\x.west) {\the\numexpr\i-1\relax};
+}}
+\endpgfonlayer}}
+\end{column}
+\end{columns}
+\begin{tikzpicture}[remember picture,overlay]
+    \onslide<10->{%
+        \node[above right=.25cm,yshift=.33cm,scale=.6] (pingu) at (current page.south west) {\usebox\pinguA};
+        \node[above=1mm,xshift=6mm,scale=.75,text width=3.5cm,align=center,font=\footnotesize\sffamily] at(pingu.north) {%
+            Hmmmm\ldots\ \only<11->{Dat is ne Array-Nummerierung!}
+        };
+    }
+\end{tikzpicture}
+\end{frame}
+
+\savebox\pinguA{\tikz{\pingu[cloak,heart=lgray,eyes angry]}}%
+\begin{frame}[fragile]{Ein Heap als Array}
+\begin{columns}[c]
+\begin{column}{.55\linewidth}
+\begin{itemize}
+    \item<2-> Heaps sind meist \say{nur} Arrays.
+    \item<6-> Hilfsroutinen erlauben die angenehme Arbeit:
+\begin{uncoverenv}<7->
+\lstfs{7}%
+\begin{plainjava}
+int left(int n) { return 2 * n + 1; }
+int right(int n) { return 2 * n + 2; }
+int parent(int n) { return (n - 1) / 2; }
+\end{plainjava}
+\end{uncoverenv}
+    \item<8-> Checks schaden natürlich nicht!
+\end{itemize}
+\end{column}
+\begin{column}{.35\linewidth}
+\centering\onslide<3->{\heap{[9,name=a[7,name=b[3,name=d][2,name=e]][5,name=c[3,name=f][,phantom]]]%
+\pgfonlayer{background}
+\onslide<4->{\foreach[count=\i] \x in {a, b, c, d, e, f} {
+        \node[paletteA,font=\sbfamily,left=.25mm] at (\x.west) {\the\numexpr\i-1\relax};
+}}
+\endpgfonlayer}}\bigskip\par
+~~~~~\begin{tikzpicture}% urgh - kill me :C
+\onslide<5->{%
+    \node[lblock,fill=white,very thick,right,outer sep=0pt] (0) at (0,0) {9};
+    \foreach[count=\i,remember=\i as \li (initially 0)] \n in {7,5,3,2,3} {
+        \node[lblock,fill=white,right,outer sep=0pt,very thick] (\i) at (\li.east) {\n};
+    }
+    % hacky baby, should have filled
+    \draw[lgray,rounded corners=1.55pt,ultra thick] (0.south west) rectangle (5.north east);
+    \foreach \i in {0,...,5} {
+        \node[below=1mm,paletteA,font=\sbfamily,scale=.6] at (\i.south) {\i};
+    }
+}%
+\end{tikzpicture}%
+\end{column}
+\end{columns}
+\begin{tikzpicture}[remember picture,overlay]
+    \onslide<9->{%
+        \node[above right=.25cm,xshift=.15cm,yshift=.33cm,scale=.6] (pingu) at (current page.south west) {\usebox\pinguA};
+        \node[above=1mm,xshift=3mm,scale=.75,text width=3.5cm,align=center,font=\footnotesize\sffamily] at(pingu.north) {%
+            Tipp: Bei Arrays ist meist auch \textit{swap} äußerst hilfreich!%
+        };
+    }
+\end{tikzpicture}
+\end{frame}
+
+% TODO: percolate stuffies
+\section{Abschluss}
+\begin{frame}
+\end{frame}
 
 \end{document}
