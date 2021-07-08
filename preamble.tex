@@ -99,13 +99,6 @@
 
 \addbibresource{./references.bib}
 
-\makeatletter
-\newcommand*\md{\@ifstar{\@md}{\@md{0}}}% with star we can set handout state
-\def\@md#1#2{\only<#2|handout:#1>{\llap{\color{shadeA}\textbullet~}}}
-\newcommand*\mb[2][0]{\only<#2|handout:#1>{\rlap{\smash{\raisebox{-.66\baselineskip}{\color{shadeA}\textbullet}}}}}
-\newcommand*\mh[2][0]{\only<#2|handout:#1>{\color{shadeA}\textbullet}}
-\newcommand*\mdl[2][0]{\only<#2|handout:#1>{\llap{\smash{\raisebox{-.5\baselineskip}{\tikz{\fill[shadeA,rounded corners=1pt] (0,-.65mm) rectangle ++(2.15\p@,\baselineskip+.65mm);}}~}}}}
-\makeatother
 
 \setcounter{tocdepth}{4}
 \newsavebox\pinguA \newsavebox\pinguB \newsavebox\pinguC
@@ -115,4 +108,6 @@
     \node[above left,btdl@color@white,scale=.475] at (current page.south east) {\href{https://github.com/EagleoutIce/Episode-Heaps}{Slides and \LaTeX-sources on GitHub!}};
 \end{tikzpicture}}
 
-\newcommand*\heap[2][]{\downsize{\linewidth}{\begin{forest}for tree={lblob,minimum width=2em,s sep=4em-level*.5em,edge={line width=3pt,lgray},#1}#2\end{forest}}}
+\newcommand*\heap[2][]{\downsize{\linewidth}{\begin{forest}for tree={lblob,minimum width=2.5em,s sep=4em-level*.5em,edge={line width=3pt,lgray},#1}#2\end{forest}}}
+
+\hfuzz=5cm

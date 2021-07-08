@@ -21,18 +21,54 @@
     \begin{column}{.45\linewidth}
 \onslide<2->{\centering\heap{[4[2[-2][-3]][1]]}\bigskip\par}
 \onslide<4->{\textcolor{gray}{\textbf{Max}-Heap}\par
-    {\scriptsize\(\text{Eltern} \geq \text{Kinder}\)}}
+    {\textcolor{gray}{\scriptsize\(\text{Eltern} \geq \text{Kinder}\)}}}
     \end{column} \begin{column}{.45\linewidth}
 \onslide<3->{\centering\heap{[-3[-2[2][4]][1]]}\bigskip\par}
 \onslide<5->{\textcolor{gray}{\textbf{Min}-Heap}\par
-    {\scriptsize\(\text{Eltern} \leq \text{Kinder}\)}}
+    {\textcolor{gray}{\scriptsize\(\text{Eltern} \leq \text{Kinder}\)}}}
     \end{column}
 \end{columns}
 \end{frame}
 
 \subsection{Die Anatomie eines heaps}
+\savebox\pinguA{\tikz{\pingu[monocle left, right eye wink, right wing grab,bow tie=paletteA]}}%
+\savebox\pinguB{\tikz{\pingu[wings shock, eyes shiny, princess crown]}}%
 \begin{frame}{Die Anatomie}
-    \centering\heap{[4[2[-2][-3]][1]]}\bigskip\par
+    \onslide<2->{\centering\heap{%
+        [42,name=root[19,name=inner1[7,name=inner2[3,name=leaf1][-2,name=leaf2]][8,name=leaf3]][-5,name=inner3[-9,name=leaf4]]]%
+        \onslide<3->{\fill[shadeA] (root.north)++(0,2mm) circle [radius=2.15pt] node[left=1.65mm,paletteA,font=\sbfamily] (dr) {Wurzel};
+        \node[below=-4pt,gray,font=\scriptsize\itshape] at (dr.south) {root};}
+        \pgfinterruptboundingbox
+        \onslide<4->{\fill[shadeB] (inner1.north)++(0,2mm) circle [radius=2.15pt] node[left=1.65mm,paletteB,font=\sbfamily] (di) {Innerer Knoten};
+        \node[below=-4pt,gray,font=\scriptsize\itshape] at (di.south) {inner node};
+        \foreach\i in {2,3} {\fill[shadeB] (inner\i.north)++(0,2mm) circle [radius=2.15pt];}}
+        \onslide<5->{\fill[shadeD] (leaf1.west)++(-2mm,0) circle [radius=2.15pt] node[left=1.65mm,paletteD,font=\sbfamily] (dl) {Blatt};
+        \node[below=-4pt,gray,font=\scriptsize\itshape] at (dl.south) {leaf};
+        \foreach\i in {2,3,4} {\fill[shadeD] (leaf\i.west)++(-2mm,0) circle [radius=2.15pt];}}
+        \endpgfinterruptboundingbox
+        \onslide<7->{
+            \node[right=1.25cm,gray] (niveau) at (dr-|inner3) {\textbf{Ebene}};
+        }
+        \pgfonlayer{background}
+            \foreach[count=\i] \x in {root,inner1,leaf3,leaf1} {
+                \onslide<\the\numexpr\i+7\relax->{
+                    \node[gray,font=\sbfamily] (dn\i) at(\x-|niveau) {\the\numexpr\i-1\relax};
+                    \draw[lgray!90!white,densely dashed, very thick] (dn\i.west) -- (dl.west|-dn\i.west);
+                }
+            }
+        \endpgfonlayer
+    }}
+\begin{tikzpicture}[overlay,remember picture]
+    \onslide<6->{%
+        \node[below left=.25cm,yshift=.8cm,scale=.6] (pingu) at (current page.north east) {\rotatebox[origin=c]{180}{\usebox\pinguA}};
+        \node[left,scale=.6,text width=6.75cm,align=center,yshift=-.33cm] at (pingu.west) {Blätter sind also Knoten ohne weitere Kindknoten.};
+    }
+    \onslide<12->{%
+        \node[above right=-.66cm,scale=.6] (pingu) at (current page.south west) {\rotatebox[origin=c]{-45}{\usebox\pinguB}};
+        \node[above=1.5mm,scale=.625,xshift=-1.65mm,gray,text width=5.5cm,align=center,yshift=-.33cm] at (pingu.north east) {Die Linien zwischen den Knoten heißen einfach \say{Kante} (\textit{edge}).};
+    }
+\end{tikzpicture}%
 \end{frame}
+
 
 \end{document}
