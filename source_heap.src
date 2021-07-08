@@ -16,21 +16,22 @@
 \section{Arten von Heaps}
 
 \subsection{Max-Heap vs. Min-Heap}
+\savebox\pinguC{\tikz[baseline=-.6ex]{\fill[shadeA] circle[radius=2.15pt];}~~\thinspace}
 \begin{frame}{Die Muster-Kinder}
 \begin{columns}[c]
     \begin{column}{.45\linewidth}
 \onslide<2->{\centering\heap{[4[2[-2][-3]][1]]}\bigskip\par}
-\onslide<4->{\textcolor{gray}{\textbf{Max}-Heap}\par
+    \onslide<4->{\color{gray}\hskip-\wd\pinguC\relax\usebox\pinguC\textbf{Max}-Heap\par
     {\textcolor{gray}{\scriptsize\(\text{Eltern} \geq \text{Kinder}\)}}}
     \end{column} \begin{column}{.45\linewidth}
 \onslide<3->{\centering\heap{[-3[-2[2][4]][1]]}\bigskip\par}
-\onslide<5->{\textcolor{gray}{\textbf{Min}-Heap}\par
+    \onslide<5->{\color{gray}\textbf{Min}-Heap\par
     {\textcolor{gray}{\scriptsize\(\text{Eltern} \leq \text{Kinder}\)}}}
     \end{column}
 \end{columns}
 \end{frame}
 
-\subsection{Die Anatomie eines heaps}
+\subsection{Die Anatomie eines Heaps}
 \savebox\pinguA{\tikz{\pingu[monocle left, right eye wink, right wing grab,bow tie=paletteA]}}%
 \savebox\pinguB{\tikz{\pingu[wings shock, eyes shiny, princess crown]}}%
 \begin{frame}{Die Anatomie}
@@ -68,6 +69,45 @@
         \node[above=1.5mm,scale=.625,xshift=-1.65mm,gray,text width=5.5cm,align=center,yshift=-.33cm] at (pingu.north east) {Die Linien zwischen den Knoten heißen einfach \say{Kante} (\textit{edge}).};
     }
 \end{tikzpicture}%
+\end{frame}
+
+\subsection{Ein formaler Blick}
+\savebox\pinguA{\tikz{\pingu[eyes shock,wings shock,hair 3=paletteB, halo]}}%
+\SidebarCite{gh:episode-recursion}
+\begin{frame}{Formales}
+\begin{itemize}[<+(1)->]
+    \itemsep15pt
+    \item Für uns ein Baum \begin{itemize}
+        \item Graph \(G = (V, E)\) mit \(\abs{V}\) Knoten und \(\abs{E}\) Kanten.
+        \item \(V\) und \(E\) sind endlich.
+        \item Azyklisch \& zusammenhängend (\say{maximal azyklisch}).
+    \end{itemize}
+    \item Sogar ein Binärbaum! \begin{itemize}
+        \item Jeder Knoten hat maximal zwei Nachfolger.
+    \end{itemize}
+    \item Sie lassen sich als rekursive Struktur auffassen.
+\end{itemize}
+\begin{tikzpicture}[overlay,remember picture]
+    \onslide<9->{%
+        \node[below,xshift=-.5cm,yshift=.8cm,scale=.6] (pingu) at (current page.north east) {\rotatebox[origin=c]{135}{\usebox\pinguA}};
+        \node[left,scale=.6,text width=6.25cm,align=center,yshift=-.33cm] at (pingu.west) {Eine sträflich oberflächliche Betrachtung etlicher formaler Grundlagen.};
+    }
+\end{tikzpicture}%
+\end{frame}
+\SidebarReset
+
+\section{Operationen}
+
+\savebox\pinguA{\heap{[3,name=3[4,name=4,edge={shadeA},edge label={node[midway, above left,paletteA] {\faFlash\ Max-Heap}}][2,name=2]] \pgfresetboundingbox
+\path[use as bounding box] (4|-3)++(-.33333em,.33333em) rectangle (2.south east);}}
+\begin{frame}{Heapify}
+\centering\onslide<2->{\usebox\pinguA}\onslide<3->{\qquad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) -- (.75,0);}}\qquad\heap{[4[3][2]]\pgfresetboundingbox
+    \path[use as bounding box] (4|-3)++(-.33333em,.33333em) rectangle (2.south east);}}
+\vspace*{3em}
+\begin{itemize}
+    \item<4-> \textit{Up}-Heapify: Prüft Blätter \(\to\) Wurzel.
+    \item<5-> \textit{Down}-Heapify: Prüft Wurzel \(\to\) Blätter.
+\end{itemize}
 \end{frame}
 
 
