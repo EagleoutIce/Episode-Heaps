@@ -1,8 +1,7 @@
 \input{preamble}
 
 \begin{document}
-\section{Arten von Heaps}
-\subsection{Initiales}
+\section{Initiales}
 \SidebarCite{gh:episode-recursion}
 \SidebarCite{gh:tikzpingus}
 \begin{frame}{Disclaimer}
@@ -11,11 +10,12 @@
         \item Dieser \say{Heap} hat nichts mit dem aus der Rekursions-\allowbreak Episode zu tun!
         \item Wir beschränken uns auf Heap-\textit{Bäume}.
         \item Wir ignorieren Rotationen.
+        \item Die Folien sind in \(\sim\)\,3 Stunden entstanden.\textsuperscript{Und daher reduziert.}
     \end{itemize}
 \end{frame}
 \SidebarReset
 
-
+\section{Arten von Heaps}
 \subsection{Max-Heap vs. Min-Heap}
 \savebox\pinguC{\tikz[baseline=-.6ex]{\fill[shadeA] circle[radius=2.15pt];}~~\thinspace}
 \begin{frame}{Die Muster-Kinder}
@@ -153,7 +153,7 @@
 \downsize{.75\linewidth}{$\color{gray}\onslide<4->{\underbrace{\strut\color{black}\onslide<4->{\usebox\pinguA}\onslide<5->{\qquad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) to[edge node={node[above=4pt,font=\sbfamily]{$\langle$9$\rangle$}}] (.75,0);}}}}_{\text{\textcolor{gray}{\LARGE\strut Remove}}}}$~$\color{gray}\onslide<5->{\underbrace{~~\strut\color{black}\onslide<5->{{\heap{[6,name=6[8,name=8,edge=shadeA[3]][5]]\draw[gray,ultra thick,Kite-Kite] (8) to[bend left=45] (6);}}}\onslide<6->{\quad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) -- (.75,0);}}\quad{\heap{[8[6[3]][5]]}}}}_{\text{\textcolor{gray}{\LARGE\strut Heapify}}}}$}
 \end{frame}
 
-\subsection{Insert/Put}
+\subsection{Weitere Operationen}
 \begin{frame}{Weitere Operationen}
     \begin{itemize}[<+(1)->]
         \itemsep15pt
@@ -255,7 +255,16 @@ int parent(int n) { return (n - 1) / 2; }
 
 % TODO: percolate stuffies
 \section{Abschluss}
-\begin{frame}
+\SidebarCite{tsk:search-tree}
+\begin{frame}{Zur Übung}
+    \begin{itemize}
+        \itemsep7pt
+        \item Visualisiere \textit{insert} \(3, 5, 8, 3, -5, 6\) (in der Reihenfolge) im Min-Heap. Am Besten simultan im Baum und im Array.
+        \item Visualisiere nun das Entfernen, bis der Heap leer ist.
+        \item Versuche einen binären Suchbaum in Java zu implementieren.\bigskip
+        \item[\scalebox{.5}{\raisebox{3.66pt}{\paletteA{$\blacksquare$}}}] Bei diesen und anderen Datenstrukturen hilft die \textit{praktische} Auseinandersetzung!
+    \end{itemize}
 \end{frame}
+\SidebarReset
 
 \end{document}
