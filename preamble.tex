@@ -110,9 +110,14 @@
 
 \newcommand*\heap[2][]{\downsize{\linewidth}{\begin{forest}for tree={lblob,minimum width=2.5em,s sep=4em-level*.5em,edge={line width=3pt,lgray},#1}#2\end{forest}}}
 
-\long\def\hsStep#1#2#3#4#5{%
+\makeatletter
+% 4 empty => ship arbitrary with 5
+\long\def\hsStep{\@ifstar\@hsStep\@@hsStep}
+\long\def\@hsStep#1#2#3#4#5{\@@@hsStep{#1}{#2}{#3}{#4}{#5}{Kite-}}
+\long\def\@@hsStep#1#2#3#4#5{\@@@hsStep{#1}{#2}{#3}{#4}{#5}{Kite-Kite}}
+\long\def\@@@hsStep#1#2#3#4#5#6{%
 \begin{center}
-\savebox0{\heap{#1}}\parbox[\ht0+\dp0]{16em}{\centering\downsize\linewidth{\usebox0}}\hfill\begin{tikzpicture}
+\savebox0{\heap{#1}}\parbox[c][12em]{17.5em}{\null\vfill\centering\downsize\linewidth{\usebox0}\vfill\null}\hfill\begin{tikzpicture}
 \foreach[count=\i,remember=\i as \li (initially 0)] \l in {#2} {
     \xdef\curmax{\i}
     \ifnum\li=0
@@ -130,11 +135,12 @@
     \node[below=1mm,gray,font=\sbfamily,scale=.6] (d\i) at (\i.south) {\strut\the\numexpr\i-1};
     \fi
 }
-\ifx!#4!\else
-    \draw[gray,Kite-Kite] (d#4.south) to[bend right] (d#5.south);
+\ifx!#4! #5\else
+    \draw[gray,thick,#6] (d#4.south) to[bend right] (d#5.south);
 \fi
 \endpgfinterruptboundingbox
 \end{tikzpicture}
 \end{center}}
+\makeatother
 
 \hfuzz=5cm
