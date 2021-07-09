@@ -10,7 +10,7 @@
         \item Dieser \say{Heap} hat nichts mit dem aus der Rekursions-\allowbreak Episode zu tun!
         \item Wir beschränken uns auf Heap-\textit{Bäume}.
         \item Wir ignorieren Rotationen.
-        \item Die Folien sind in \(\sim\)\,3 Stunden entstanden.\textsuperscript{Und daher reduziert.}
+        \item Die Folien sind in \(\sim\)\,3.5 Stunden entstanden.\textsuperscript{Und daher reduziert.}
     \end{itemize}
 \end{frame}
 \SidebarReset
@@ -167,7 +167,8 @@
 \end{frame}
 \SidebarReset
 
-\section{Arrays}
+\section{Als Array}
+\subsection{Zusammenhang von Heaps und Arrays}
 \savebox\pinguA{\tikz{\pingu[right wing shock,left wing raise,straw hat,pants=paletteD!50!black]}}%
 \begin{frame}{Erstaunliche Erkentnisse}
     \onslide<2->{\begin{center}
@@ -257,6 +258,47 @@ int parent(int n) { return (n - 1) / 2; }
 \end{tikzpicture}
 \end{frame}
 
+\subsection{Beispielhaftes Heapify}
+\savebox\pinguA{\tikz{\pingu[body=paletteA,eye patch right,bow tie=paletteB]}}
+\savebox\pinguC{\tikz[baseline=-.6ex]{\fill[shadeA] circle[radius=2.15pt];}}
+\begin{frame}{Ein absteigendes Beispiel}
+\begin{center}
+    \onslide<2-|handout:1->{\([\only<3|handout:2>{\underset{\strut\usebox\pinguC}}3, \only<4-5|handout:3>{\underset{\strut\usebox\pinguC}}9, \only<6|handout:4>{\underset{\strut\usebox\pinguC}}8, \only<7|handout:5>{\underset{\strut\usebox\pinguC}}2, \only<8-|handout:6->{\underset{\strut\usebox\pinguC}}{12}]\)}
+\end{center}
+\medskip\par
+\only<2|handout:1>{\hsStep{[,lblob=shadeD,minimum size=0,inner sep=5pt]}{,,,,}{0}{}{}}%
+\only<3|handout:2>{\hsStep{[3,name=a[,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt][,phantom]]\foreach[count=\i] \x in {a} {
+    \node[paletteA,font=\sbfamily,left=.25mm] at (\x.west) {\the\numexpr\i-1\relax};
+}}{3,,,,}{1}{}{}}%
+\only<4|handout:3>{\hsStep{[3,name=3[9,name=9,edge=shadeA][,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt]]\draw[gray,Kite-Kite] (9) to[bend left,thick] (3);\foreach[count=\i] \x in {3,9} {
+    \node[paletteA,font=\sbfamily,left=.25mm,scale=.75] at (\x.west) {\the\numexpr\i-1\relax};
+}}{3,9,,,}{2}{1}{2}}%
+\only<5|handout:0>{\hsStep{[9,name=9[3,name=3][,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt]]\foreach[count=\i] \x in {9,3} {
+    \node[paletteA,font=\sbfamily,left=.25mm,scale=.75] at (\x.west) {\the\numexpr\i-1\relax};
+}}{9,3,,,}{2}{}{}}%
+\only<6|handout:4>{\hsStep{[9,name=9[3,name=3[,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt][,phantom]][8,name=8]]\foreach[count=\i] \x in {9,3,8} {
+    \node[paletteA,font=\sbfamily,left=.25mm,scale=.75] at (\x.west) {\the\numexpr\i-1\relax};
+}}{9,3,8,,}{3}{}{}}%
+\only<7|handout:5>{\hsStep{[9,name=9[3,name=3[2,name=2][,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt]][8,name=8]]\foreach[count=\i] \x in {9,3,8,2} {
+    \node[paletteA,font=\sbfamily,left=.25mm,scale=.75] at (\x.west) {\the\numexpr\i-1\relax};
+}}{9,3,8,2,}{4}{}{}}%
+\only<8|handout:6>{\hsStep{[9,name=9[3,name=3[2,name=2][12,name=12,edge=shadeA]][8,name=8[,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt][,phantom]]]\draw[gray,Kite-Kite] (12) to[bend right,thick] (3);\foreach[count=\i] \x in {9,3,8,2,12} {
+    \node[paletteA,font=\sbfamily,left=.25mm,scale=.75] at (\x.west) {\the\numexpr\i-1\relax};
+}}{9,3,8,2,12}{5}{2}{5}}%
+\only<9|handout:7>{\hsStep{[9,name=9[12,name=12,edge=shadeA[2,name=2][3,name=3]][8,name=8[,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt][,phantom]]]\draw[gray,Kite-Kite] (12) to[bend right,thick] (9);\foreach[count=\i] \x in {9,12,8,2,3} {
+    \node[paletteA,font=\sbfamily,left=.25mm,scale=.75] at (\x.west) {\the\numexpr\i-1\relax};
+}}{9,12,8,2,3}{5}{1}{2}}%
+\only<10-|handout:8->{\hsStep{[12,name=12[9,name=9[2,name=2][3,name=3]][8,name=8[,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt][,phantom]]]\foreach[count=\i] \x in {12,9,8,2,3} {
+    \node[paletteA,font=\sbfamily,left=.25mm,scale=.75] at (\x.west) {\the\numexpr\i-1\relax};
+}}{12,9,8,2,3}{5}{}{}}%
+\begin{tikzpicture}[overlay,remember picture]
+    \onslide<11-|handout:8->{%
+        \node[below,xshift=-.5cm,yshift=.8cm,scale=.6] (pingu) at (current page.north east) {\rotatebox[origin=c]{135}{\usebox\pinguA}};
+        \node[left=-5mm,scale=.6,text width=6.75cm,align=center,yshift=-.66cm] at (pingu.west) {Konstruiert man den Heap nur durch \textit{insert}, verletzt für heapify stets max. ein Element die Heap-Eigenschaft. Weiter ist er schön ausgewogen.};
+    }
+\end{tikzpicture}
+\end{frame}
+
 % TODO: percolate stuffies
 \section{Abschluss}
 \SidebarCite{tsk:search-tree}
@@ -264,7 +306,7 @@ int parent(int n) { return (n - 1) / 2; }
 \begin{frame}{Zur Übung}
     \begin{itemize}[<+(1)->]
         \itemsep7pt
-        \item Visualisiere \textit{insert} \([3, 5, 8, 3, -5, 6]\) (in der Reihenfolge) im Min-Heap. Am Besten simultan im Baum und im Array.
+        \item Visualisiere \textit{insert} \([3, 5, 8, 3, -5, 6]\) (in der Reihenfolge) im \textit{Min}-Heap. Am Besten simultan im Baum und im Array.
         \item Visualisiere nun das Entfernen, bis der Heap leer ist.
         \item Versuche einen binären Suchbaum zu implementieren.\bigskip
         \item[\scalebox{.5}{\raisebox{3.66pt}{\paletteA{$\blacksquare$}}}] Bei diesen und anderen Datenstrukturen hilft die \textit{praktische} Auseinandersetzung!
