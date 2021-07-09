@@ -151,7 +151,7 @@
 \end{itemize}
 \vspace*{3em}\par
 \centering
-\downsize{.75\linewidth}{$\color{gray}\onslide<4->{\underbrace{\strut\color{black}\onslide<4->{\usebox\pinguA}\onslide<5->{\qquad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) to[edge node={node[above=4pt,font=\sbfamily]{$\langle$9$\rangle$}}] (.75,0);}}}}_{\text{\textcolor{gray}{\LARGE\strut Remove}}}}$~$\color{gray}\onslide<5->{\underbrace{~~\strut\color{black}\onslide<5->{{\heap{[6,name=6[8,name=8,edge=shadeA[3]][5]]\draw[gray,very thick,Kite-Kite] (8) to[bend left=45] (6);}}}\onslide<6->{\quad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) -- (.75,0);}}\quad{\heap{[8[6[3]][5]]}}}}_{\text{\textcolor{gray}{\LARGE\strut Heapify}}}}$}
+\downsize{.75\linewidth}{$\color{gray}\onslide<4->{\underbrace{\strut\color{black}\onslide<4->{\usebox\pinguA}\onslide<5->{\qquad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) to[edge node={node[above=4pt,font=\sbfamily]{$\langle$9$\rangle$}}] (.75,0);}}}}_{\text{\textcolor{gray}{\LARGE\strut Remove}}}}$~$\color{gray}\onslide<5->{\underbrace{~~\strut\color{black}\onslide<5->{{\heap{[6,name=6[8,name=8,edge=shadeA[3][,phantom]][5]]\draw[gray,very thick,Kite-Kite] (8) to[bend left=45] (6);}}}\onslide<6->{\quad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) -- (.75,0);}}\quad{\heap{[8[6[3][,phantom]][5]]}}}}_{\text{\textcolor{gray}{\LARGE\strut Heapify}}}}$}
 \end{frame}
 
 \subsection{Weitere Operationen}
@@ -180,7 +180,7 @@
 \begin{column}{.55\linewidth}
 \footnotesize\begin{itemize}
     \item<5-> Jede gefüllte Ebene \(i\) enthält \(2^i\) Elemente.
-    \item<6-> Die Nummerierung nach Breitensuche erlaubt Adressierung!
+    \item<6-> Die Nummerierung nach Breitendurchlauf erlaubt Adressierung!
     \item<8-> Das linke Kind von \(n\) ist \(2 \cdot n + 1\), das rechte Kind \(2 \cdot n + 2\).
     \item<9-> Der Elternknoten von \(n\) ist \(\lfloor \frac{n - 1}{2}\rfloor\).
 \end{itemize}
@@ -306,7 +306,7 @@ int parent(int n) { return (n - 1) / 2; }
 \begin{tikzpicture}[overlay,remember picture]
     \only<11|handout:8>{%
         \node[below,xshift=-.5cm,yshift=.8cm,scale=.6] (pingu) at (current page.north east) {\rotatebox[origin=c]{135}{\usebox\pinguA}};
-        \node[left=-5mm,scale=.6,text width=6.75cm,align=center,yshift=-.66cm] at (pingu.west) {Konstruiert man den Heap nur durch \textit{insert}, verletzt für heapify stets max. ein Element die Heap-Eigenschaft. Weiter ist er schön ausgewogen.};
+        \node[left=-5mm,scale=.6,text width=6.75cm,align=center,yshift=-.66cm] at (pingu.west) {Konstruiert man den Heap nur durch \textit{insert}, verletzt stets max. das neue Element die Heap-Eigenschaft. Weiter ist er schön ausgewogen.};
     }
     \only<12-|handout:9->{%
         \node[below,xshift=-.5cm,yshift=.8cm,scale=.6] (pingu) at (current page.north east) {\rotatebox[origin=c]{135}{\usebox\pinguB}};
