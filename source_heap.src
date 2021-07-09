@@ -75,6 +75,7 @@
 \subsection{Ein formaler Blick}
 \savebox\pinguA{\tikz{\pingu[eyes shock,wings shock,hair 3=paletteB, halo]}}%
 \SidebarCite{gh:episode-recursion}
+\SidebarCite{dive:bin-tree}
 \begin{frame}{Formales}
 \begin{itemize}[<+(1)->]
     \itemsep15pt
@@ -154,6 +155,8 @@
 \end{frame}
 
 \subsection{Weitere Operationen}
+\SidebarCite{dive:heap-cpl}
+\SidebarCite{dive:heap-ops}
 \begin{frame}{Weitere Operationen}
     \begin{itemize}[<+(1)->]
         \itemsep15pt
@@ -162,6 +165,7 @@
         \item Meld\,/\,Join
     \end{itemize}
 \end{frame}
+\SidebarReset
 
 \section{Arrays}
 \savebox\pinguA{\tikz{\pingu[right wing shock,left wing raise,straw hat,pants=paletteD!50!black]}}%
@@ -256,12 +260,13 @@ int parent(int n) { return (n - 1) / 2; }
 % TODO: percolate stuffies
 \section{Abschluss}
 \SidebarCite{tsk:search-tree}
+\SidebarCite{tsk:data}
 \begin{frame}{Zur Übung}
-    \begin{itemize}
+    \begin{itemize}[<+(1)->]
         \itemsep7pt
-        \item Visualisiere \textit{insert} \(3, 5, 8, 3, -5, 6\) (in der Reihenfolge) im Min-Heap. Am Besten simultan im Baum und im Array.
+        \item Visualisiere \textit{insert} \([3, 5, 8, 3, -5, 6]\) (in der Reihenfolge) im Min-Heap. Am Besten simultan im Baum und im Array.
         \item Visualisiere nun das Entfernen, bis der Heap leer ist.
-        \item Versuche einen binären Suchbaum in Java zu implementieren.\bigskip
+        \item Versuche einen binären Suchbaum zu implementieren.\bigskip
         \item[\scalebox{.5}{\raisebox{3.66pt}{\paletteA{$\blacksquare$}}}] Bei diesen und anderen Datenstrukturen hilft die \textit{praktische} Auseinandersetzung!
     \end{itemize}
 \end{frame}
