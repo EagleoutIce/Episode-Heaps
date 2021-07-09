@@ -323,8 +323,7 @@ int parent(int n) { return (n - 1) / 2; }
     \begin{itemize}[<+(1)->]
         \itemsep7pt
         \item Visualisiere \textit{insert} \([3, 5, 8, 3, -5, 6]\) (in der Reihenfolge) im \textit{Min}-Heap. Am Besten simultan im Baum und im Array.
-        \item Visualisiere nun das Entfernen, bis der Heap leer ist.
-        \item Versuche einen binären Suchbaum zu implementieren.\bigskip
+        \item Visualisiere nun das Entfernen, bis der Heap leer ist.\bigskip
         \item[\scalebox{.5}{\raisebox{3.66pt}{\paletteA{$\blacksquare$}}}] Bei diesen und anderen Datenstrukturen hilft die \textit{praktische} Auseinandersetzung!
     \end{itemize}
 \end{frame}
