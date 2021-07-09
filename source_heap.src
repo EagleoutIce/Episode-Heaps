@@ -132,7 +132,7 @@
 \end{itemize}
 \vspace*{3em}\par
 \centering
-\downsize\linewidth{$\color{gray}\onslide<4->{\underbrace{\strut\color{black}\onslide<4->{\usebox\pinguA}\onslide<5->{\qquad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) to[edge node={node[above=4pt,font=\sbfamily]{9}}] (.75,0);}}}}_{\text{\textcolor{gray}{\LARGE\strut Insert}}}}$~$\color{gray}\onslide<5->{\underbrace{\strut\color{black}\onslide<5->{{\heap{[8[6,name=6[3][9,name=9,edge=shadeA]][5]]\draw[gray,ultra thick,Kite-Kite] (9) to[bend right=45] (6);}}}\onslide<6->{\qquad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) -- (.75,0);}}~{\heap{[8,name=8[9,name=9,edge=shadeA[3][6]][5]]\draw[gray,ultra thick,Kite-Kite] (9) to[bend left=45] (8);}}}\onslide<7->{\qquad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) -- (.75,0);}}~{\heap{[9[8[3][6]][5]]}}}}_{\text{\textcolor{gray}{\LARGE\strut Heapify}}}}$}
+\downsize\linewidth{$\color{gray}\onslide<4->{\underbrace{\strut\color{black}\onslide<4->{\usebox\pinguA}\onslide<5->{\qquad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) to[edge node={node[above=4pt,font=\sbfamily]{9}}] (.75,0);}}}}_{\text{\textcolor{gray}{\LARGE\strut Insert}}}}$~$\color{gray}\onslide<5->{\underbrace{\strut\color{black}\onslide<5->{{\heap{[8[6,name=6[3][9,name=9,edge=shadeA]][5]]\draw[gray,very thick,Kite-Kite] (9) to[bend right=45] (6);}}}\onslide<6->{\qquad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) -- (.75,0);}}~{\heap{[8,name=8[9,name=9,edge=shadeA[3][6]][5]]\draw[gray,very thick,Kite-Kite] (9) to[bend left=45] (8);}}}\onslide<7->{\qquad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) -- (.75,0);}}~{\heap{[9[8[3][6]][5]]}}}}_{\text{\textcolor{gray}{\LARGE\strut Heapify}}}}$}
 \begin{tikzpicture}[overlay,remember picture]
     \onslide<8->{%
         \node[below left=.25cm,yshift=.8cm,scale=.6] (pingu) at (current page.north east) {\rotatebox[origin=c]{180}{\usebox\pinguB}};
@@ -151,7 +151,7 @@
 \end{itemize}
 \vspace*{3em}\par
 \centering
-\downsize{.75\linewidth}{$\color{gray}\onslide<4->{\underbrace{\strut\color{black}\onslide<4->{\usebox\pinguA}\onslide<5->{\qquad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) to[edge node={node[above=4pt,font=\sbfamily]{$\langle$9$\rangle$}}] (.75,0);}}}}_{\text{\textcolor{gray}{\LARGE\strut Remove}}}}$~$\color{gray}\onslide<5->{\underbrace{~~\strut\color{black}\onslide<5->{{\heap{[6,name=6[8,name=8,edge=shadeA[3]][5]]\draw[gray,ultra thick,Kite-Kite] (8) to[bend left=45] (6);}}}\onslide<6->{\quad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) -- (.75,0);}}\quad{\heap{[8[6[3]][5]]}}}}_{\text{\textcolor{gray}{\LARGE\strut Heapify}}}}$}
+\downsize{.75\linewidth}{$\color{gray}\onslide<4->{\underbrace{\strut\color{black}\onslide<4->{\usebox\pinguA}\onslide<5->{\qquad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) to[edge node={node[above=4pt,font=\sbfamily]{$\langle$9$\rangle$}}] (.75,0);}}}}_{\text{\textcolor{gray}{\LARGE\strut Remove}}}}$~$\color{gray}\onslide<5->{\underbrace{~~\strut\color{black}\onslide<5->{{\heap{[6,name=6[8,name=8,edge=shadeA[3]][5]]\draw[gray,very thick,Kite-Kite] (8) to[bend left=45] (6);}}}\onslide<6->{\quad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) -- (.75,0);}}\quad{\heap{[8[6[3]][5]]}}}}_{\text{\textcolor{gray}{\LARGE\strut Heapify}}}}$}
 \end{frame}
 
 \subsection{Weitere Operationen}
@@ -264,7 +264,7 @@ int parent(int n) { return (n - 1) / 2; }
 \savebox\pinguC{\tikz[baseline=-.6ex]{\fill[shadeA] circle[radius=2.15pt];}}
 \begin{frame}{Ein absteigendes Beispiel}
 \begin{center}
-    \onslide<2-|handout:1->{\([\only<3|handout:2>{\underset{\strut\usebox\pinguC}}3, \only<4-5|handout:3>{\underset{\strut\usebox\pinguC}}9, \only<6|handout:4>{\underset{\strut\usebox\pinguC}}8, \only<7|handout:5>{\underset{\strut\usebox\pinguC}}2, \only<8-11|handout:6-8>{\underset{\strut\usebox\pinguC}}{12}]\)}
+    \onslide<2-|handout:1->{\([\vphantom{\underset{\strut\usebox\pinguC}3}\only<3|handout:2>{\underset{\strut\usebox\pinguC}}3, \only<4-5|handout:3>{\underset{\strut\usebox\pinguC}}9, \only<6|handout:4>{\underset{\strut\usebox\pinguC}}8, \only<7|handout:5>{\underset{\strut\usebox\pinguC}}2, \only<8-11|handout:6-8>{\underset{\strut\usebox\pinguC}}{12}]\)}
 \end{center}
 \medskip\par
 \only<2|handout:1>{\hsStep{[,lblob=shadeD,minimum size=0,inner sep=5pt]}{,,,,}{0}{}{}}%
@@ -298,7 +298,7 @@ int parent(int n) { return (n - 1) / 2; }
 \only<13-14|handout:10>{\hsStep{[3,name=3[9,edge=shadeA,name=9[2,name=2][,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt]][8,edge=shadeA,name=8]]\onslide<14|handout:10>{\draw[gray,very thick,Kite-Kite] (9) to[bend right] (3);}\foreach[count=\i] \x in {3,9,8,2} {
     \node[paletteA,font=\sbfamily,left=.25mm,scale=.75] at (\x.west) {\the\numexpr\i-1\relax};
 }}{3,9,8,2,}{4}{}{%
-\onslide<14|handout:10>{\draw[gray,very thick,Kite-Kite] (d1.south) to[bend right] (d2.south);}
+\onslide<14|handout:10>{\draw[gray,very thick,Kite-Kite] (d1.south) to[bend right=20,looseness=1.25] (d2.south);}
 }}%
 \only<15-|handout:11->{\hsStep{[9,name=9[3,name=3[2,name=2][,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt]][8,,name=8]]\foreach[count=\i] \x in {9,3,8,2} {
     \node[paletteA,font=\sbfamily,left=.25mm,scale=.75] at (\x.west) {\the\numexpr\i-1\relax};

@@ -117,13 +117,13 @@
 \long\def\@@hsStep#1#2#3#4#5{\@@@hsStep{#1}{#2}{#3}{#4}{#5}{Kite-Kite}}
 \long\def\@@@hsStep#1#2#3#4#5#6{%
 \begin{center}
-\savebox0{\heap{#1}}\parbox[c][12em]{17.5em}{\null\vfill\centering\downsize\linewidth{\usebox0}\vfill\null}\hfill\begin{tikzpicture}
+\savebox0{\heap{#1}}\parbox[c][12em]{16.25em}{\centering\scalebox{.9}{\usebox0}\vfill\null}\hfill\begin{tikzpicture}
 \foreach[count=\i,remember=\i as \li (initially 0)] \l in {#2} {
     \xdef\curmax{\i}
     \ifnum\li=0
-        \node[lblock,minimum size=2em,fill=white,very thick,right,outer sep=0pt] (1) at (0,0) {\l};
+        \node[lblock,minimum size=2.25em,fill=white,very thick,right,outer sep=0pt] (1) at (0,0) {\l};
     \else
-        \node[lblock,minimum size=2em,fill=white,right,outer sep=0pt,very thick] (\i) at (\li.east) {\l};
+        \node[lblock,minimum size=2.25em,fill=white,right,outer sep=0pt,very thick] (\i) at (\li.east) {\l};
     \fi
 }
 \draw[lgray,rounded corners=1.55pt,ultra thick] (1.south west) rectangle (\curmax.north east);
@@ -136,7 +136,7 @@
     \fi
 }
 \ifx!#4! #5\else
-    \draw[gray,thick,#6] (d#4.south) to[bend right] (d#5.south);
+    \draw[gray,thick,#6] (d#4.south) to[bend right=20] (d#5.south);
 \fi
 \endpgfinterruptboundingbox
 \end{tikzpicture}
