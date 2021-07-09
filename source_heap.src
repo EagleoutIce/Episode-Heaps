@@ -86,14 +86,14 @@
     \end{itemize}
     \item Sogar ein Binärbaum! \begin{itemize}
         \item Jeder Knoten hat maximal zwei Nachfolger.
-        \item Wir konzentrieren uns auf
+        \item Wir konzentrieren uns auf ausgewogene.
     \end{itemize}
-    \item Sie lassen sich als rekursive Struktur auffassen.
+    \item Bäume lassen sich als rekursive Struktur auffassen.
 \end{itemize}
 \begin{tikzpicture}[overlay,remember picture]
     \onslide<9->{%
         \node[below,xshift=-.5cm,yshift=.8cm,scale=.6] (pingu) at (current page.north east) {\rotatebox[origin=c]{135}{\usebox\pinguA}};
-        \node[left,scale=.6,text width=6.25cm,align=center,yshift=-.33cm] at (pingu.west) {Eine sträflich oberflächliche Betrachtung etlicher formaler Grundlagen.};
+        \node[left,scale=.6,text width=6.25cm,align=center,yshift=-.33cm] at (pingu.west) {Eine sträflich oberflächliche Betrachtung etlicher cooler formaler Grundlagen.};
     }
 \end{tikzpicture}%
 \end{frame}
@@ -146,7 +146,7 @@
 \begin{frame}{Remove\,/\,Get}
 \begin{itemize}
     \itemsep8pt
-    \item<2-> \vphantom{g}Ersetze oberstes Element durch unterstes.
+    \item<2-> \vphantom{g}Ersetze oberstes Element durch \say{letztes}.
     \item<3-> Anschließend: \textit{heapify}.
 \end{itemize}
 \vspace*{3em}\par
@@ -180,7 +180,7 @@
 \footnotesize\begin{itemize}
     \item<5-> Jede gefüllte Ebene \(i\) enthält \(2^i\) Elemente.
     \item<6-> Die Nummerierung nach Breitensuche erlaubt Adressierung!
-    \item<8-> Das linke Kind von \(n\) ist \(2 \cdot n + 1\), das rechte \(2 \cdot n + 2\).
+    \item<8-> Das linke Kind von \(n\) ist \(2 \cdot n + 1\), das rechte Kind \(2 \cdot n + 2\).
     \item<9-> Der Elternknoten von \(n\) ist \(\lfloor \frac{n - 1}{2}\rfloor\)
 \end{itemize}
 \end{column}
