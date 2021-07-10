@@ -103,7 +103,7 @@
 
 \subsection{Heapify}
 \savebox\pinguA{\heap{[3,name=3[4,name=4,edge={shadeA},edge label={node[midway, above left,paletteA] {\faFlash\ Max-Heap}}][2,name=2]]}}
-\savebox\pinguB{\tikz{\pingu[left wing wave, pride flag left,sunglasses,tie=paletteD]}}%
+\savebox\pinguB{\tikz{\pingu[left wing wave, pride flag left,sunglasses,tie=paletteD,glow=paletteD]}}%
 \begin{frame}{Heapify}
 \centering\onslide<2->{\usebox\pinguA}\onslide<3->{\qquad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) -- (.75,0);}}\qquad\heap{[4[3][2]]}}
 \vspace*{3em}
@@ -264,53 +264,53 @@ int parent(int n) { return (n - 1) / 2; }
 \savebox\pinguC{\tikz[baseline=-.6ex]{\fill[shadeA] circle[radius=2.15pt];}}
 \begin{frame}{Ein absteigendes Beispiel}
 \begin{center}
-    \onslide<2-|handout:1->{\([\vphantom{\underset{\strut\usebox\pinguC}3}\only<3|handout:2>{\underset{\strut\usebox\pinguC}}3, \only<4-5|handout:3>{\underset{\strut\usebox\pinguC}}9, \only<6|handout:4>{\underset{\strut\usebox\pinguC}}8, \only<7|handout:5>{\underset{\strut\usebox\pinguC}}2, \only<8-11|handout:6-8>{\underset{\strut\usebox\pinguC}}{12}]\)}
+    \onslide<2-|handout:1->{\([\vphantom{\underset{\strut\usebox\pinguC}3}\only<3|handout:1>{\underset{\strut\usebox\pinguC}}3, \only<4-5|handout:2>{\underset{\strut\usebox\pinguC}}9, \only<6|handout:3>{\underset{\strut\usebox\pinguC}}8, \only<7|handout:4>{\underset{\strut\usebox\pinguC}}2, \only<8-11|handout:5-7>{\underset{\strut\usebox\pinguC}}{12}]\)}
 \end{center}
 \medskip\par
-\only<2|handout:1>{\hsStep{[,lblob=shadeD,minimum size=0,inner sep=5pt]}{,,,,}{0}{}{}}%
-\only<3|handout:2>{\hsStep{[3,name=a[,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt][,phantom]]\foreach[count=\i] \x in {a} {
+\only<2|handout:0>{\hsStep{[,lblob=shadeD,minimum size=0,inner sep=5pt]}{,,,,}{0}{}{}}%
+\only<3|handout:1>{\hsStep{[3,name=a[,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt][,phantom]]\foreach[count=\i] \x in {a} {
     \node[paletteA,font=\sbfamily,left=.25mm] at (\x.west) {\the\numexpr\i-1\relax};
 }}{3,,,,}{1}{}{}}%
-\only<4|handout:3>{\hsStep{[3,name=3[9,name=9,edge=shadeA][,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt]]\draw[gray,very thick,Kite-Kite] (9) to[bend left,thick] (3);\foreach[count=\i] \x in {3,9} {
+\only<4|handout:2>{\hsStep{[3,name=3[9,name=9,edge=shadeA][,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt]]\draw[gray,very thick,Kite-Kite] (9) to[bend left,thick] (3);\foreach[count=\i] \x in {3,9} {
     \node[paletteA,font=\sbfamily,left=.25mm,scale=.75] at (\x.west) {\the\numexpr\i-1\relax};
 }}{3,9,,,}{2}{1}{2}}%
 \only<5|handout:0>{\hsStep{[9,name=9[3,name=3][,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt]]\foreach[count=\i] \x in {9,3} {
     \node[paletteA,font=\sbfamily,left=.25mm,scale=.75] at (\x.west) {\the\numexpr\i-1\relax};
 }}{9,3,,,}{2}{}{}}%
-\only<6|handout:4>{\hsStep{[9,name=9[3,name=3[,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt][,phantom]][8,name=8]]\foreach[count=\i] \x in {9,3,8} {
+\only<6|handout:3>{\hsStep{[9,name=9[3,name=3[,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt][,phantom]][8,name=8]]\foreach[count=\i] \x in {9,3,8} {
     \node[paletteA,font=\sbfamily,left=.25mm,scale=.75] at (\x.west) {\the\numexpr\i-1\relax};
 }}{9,3,8,,}{3}{}{}}%
-\only<7|handout:5>{\hsStep{[9,name=9[3,name=3[2,name=2][,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt]][8,name=8]]\foreach[count=\i] \x in {9,3,8,2} {
+\only<7|handout:4>{\hsStep{[9,name=9[3,name=3[2,name=2][,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt]][8,name=8]]\foreach[count=\i] \x in {9,3,8,2} {
     \node[paletteA,font=\sbfamily,left=.25mm,scale=.75] at (\x.west) {\the\numexpr\i-1\relax};
 }}{9,3,8,2,}{4}{}{}}%
-\only<8|handout:6>{\hsStep{[9,name=9[3,name=3[2,name=2][12,name=12,edge=shadeA]][8,name=8[,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt][,phantom]]]\draw[gray,very thick,Kite-Kite] (12) to[bend right,thick] (3);\foreach[count=\i] \x in {9,3,8,2,12} {
+\only<8|handout:5>{\hsStep{[9,name=9[3,name=3[2,name=2][12,name=12,edge=shadeA]][8,name=8[,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt][,phantom]]]\draw[gray,very thick,Kite-Kite] (12) to[bend right,thick] (3);\foreach[count=\i] \x in {9,3,8,2,12} {
     \node[paletteA,font=\sbfamily,left=.25mm,scale=.75] at (\x.west) {\the\numexpr\i-1\relax};
 }}{9,3,8,2,12}{5}{2}{5}}%
-\only<9|handout:7>{\hsStep{[9,name=9[12,name=12,edge=shadeA[2,name=2][3,name=3]][8,name=8[,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt][,phantom]]]\draw[gray,very thick,Kite-Kite] (12) to[bend right,thick] (9);\foreach[count=\i] \x in {9,12,8,2,3} {
+\only<9|handout:6>{\hsStep{[9,name=9[12,name=12,edge=shadeA[2,name=2][3,name=3]][8,name=8[,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt][,phantom]]]\draw[gray,very thick,Kite-Kite] (12) to[bend right,thick] (9);\foreach[count=\i] \x in {9,12,8,2,3} {
     \node[paletteA,font=\sbfamily,left=.25mm,scale=.75] at (\x.west) {\the\numexpr\i-1\relax};
 }}{9,12,8,2,3}{5}{1}{2}}%
-\only<10-11|handout:8>{\hsStep{[12,name=12[9,name=9[2,name=2][3,name=3]][8,name=8[,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt][,phantom]]]\foreach[count=\i] \x in {12,9,8,2,3} {
+\only<10-11|handout:7>{\hsStep{[12,name=12[9,name=9[2,name=2][3,name=3]][8,name=8[,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt][,phantom]]]\foreach[count=\i] \x in {12,9,8,2,3} {
     \node[paletteA,font=\sbfamily,left=.25mm,scale=.75] at (\x.west) {\the\numexpr\i-1\relax};
 }}{12,9,8,2,3}{5}{}{}}%
-\only<12|handout:9>{\hsStep*{[12,lblob=shadeB,minimum width=2.5em,text=black,name=12[9,name=9[2,name=2][3,name=3]][8,name=8[,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt][,phantom]]]\draw[gray,very thick,-Kite] (3) to[bend right=5] (12);\foreach[count=\i] \x in {12,9,8,2,3} {
+\only<12|handout:8>{\hsStep*{[12,lblob=shadeB,minimum width=2.5em,text=black,name=12[9,name=9[2,name=2][3,name=3]][8,name=8[,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt][,phantom]]]\draw[gray,very thick,-Kite] (3) to[bend right=5] (12);\foreach[count=\i] \x in {12,9,8,2,3} {
     \node[paletteA,font=\sbfamily,left=.25mm,scale=.75] at (\x.west) {\the\numexpr\i-1\relax};
 }}{12,9,8,2,3}{5}{1}{5}}%
-\only<13-14|handout:10>{\hsStep{[3,name=3[9,edge=shadeA,name=9[2,name=2][,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt]][8,edge=shadeA,name=8]]\onslide<14|handout:10>{\draw[gray,very thick,Kite-Kite] (9) to[bend right] (3);}\foreach[count=\i] \x in {3,9,8,2} {
+\only<13-14|handout:9>{\hsStep{[3,name=3[9,edge=shadeA,name=9[2,name=2][,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt]][8,edge=shadeA,name=8]]\onslide<14|handout:9>{\draw[gray,very thick,Kite-Kite] (9) to[bend right] (3);}\foreach[count=\i] \x in {3,9,8,2} {
     \node[paletteA,font=\sbfamily,left=.25mm,scale=.75] at (\x.west) {\the\numexpr\i-1\relax};
 }}{3,9,8,2,}{4}{}{%
-\onslide<14|handout:10>{\draw[gray,very thick,Kite-Kite] (d1.south) to[bend right=20,looseness=1.25] (d2.south);}
+\onslide<14|handout:9>{\draw[gray,very thick,Kite-Kite] (d1.south) to[bend right=20,looseness=1.25] (d2.south);}
 }}%
-\only<15-|handout:11->{\hsStep{[9,name=9[3,name=3[2,name=2][,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt]][8,,name=8]]\foreach[count=\i] \x in {9,3,8,2} {
+\only<15-|handout:10->{\hsStep{[9,name=9[3,name=3[2,name=2][,lblob=shadeD,edge=shadeD,minimum size=0,inner sep=5pt]][8,,name=8]]\foreach[count=\i] \x in {9,3,8,2} {
     \node[paletteA,font=\sbfamily,left=.25mm,scale=.75] at (\x.west) {\the\numexpr\i-1\relax};
 }}{9,3,8,2,}{4}{}{}}%
 \begin{tikzpicture}[overlay,remember picture]
-    \only<11|handout:8>{%
+    \only<11|handout:7>{%
         \node[below,xshift=-.5cm,yshift=.8cm,scale=.6] (pingu) at (current page.north east) {\rotatebox[origin=c]{135}{\usebox\pinguA}};
         \node[left=-5mm,scale=.6,text width=6.75cm,align=center,yshift=-.66cm] at (pingu.west) {Konstruiert man den Heap nur durch \textit{insert}, verletzt stets max. das neue Element die Heap-Eigenschaft. Weiter ist er schön ausgewogen.};
     }
-    \only<12-|handout:9->{%
+    \only<12-|handout:8->{%
         \node[below,xshift=-.5cm,yshift=.8cm,scale=.6] (pingu) at (current page.north east) {\rotatebox[origin=c]{135}{\usebox\pinguB}};
-        \node[left=-5mm,scale=.6,text width=6.75cm,align=center,yshift=-.66cm] at (pingu.west) {Das Entfernen zur Abwechslung nun mit \say{down-heapify}.\only<13-|handout:10->{\smallskip\par Bei mehreren Konflikten: tausche mit \textit{extremerem} Element.}};
+        \node[left=-5mm,scale=.6,text width=6.75cm,align=center,yshift=-.66cm] at (pingu.west) {Das Entfernen zur Abwechslung nun mit \say{down-heapify}.\only<13-|handout:9->{\smallskip\par Bei mehreren Konflikten: tausche mit \textit{extremerem} Element.}};
     }
 \end{tikzpicture}
 \end{frame}
