@@ -8,9 +8,9 @@
     \begin{itemize}[<+(1)->]
         \itemsep12pt
         \item Dieser \say{Heap} hat nichts mit dem aus der Rekursions-\allowbreak Episode zu tun!
-        \item Wir beschränken uns auf Heap-\textit{Bäume}.
-        \item Wir ignorieren Rotationen.
-        \item Die Folien sind in \(\sim\)\,3.5 Stunden entstanden.\textsuperscript{Und daher reduziert.}
+        \item Wir beschränken uns auf Heap-\textit{Bäume}
+        \item Wir ignorieren Rotationen
+        \item Die Folien sind in \(\sim\)\,3.5 Stunden entstanden\smash{\raisebox{-2pt}{\textsuperscript{Und daher reduziert}}}
     \end{itemize}
 \end{frame}
 \SidebarReset
@@ -80,15 +80,15 @@
 \begin{itemize}[<+(1)->]
     \itemsep15pt
     \item Für uns ein Baum \begin{itemize}
-        \item Graph \(G = (V, E)\) mit \(\abs{V}\) Knoten und \(\abs{E}\) Kanten.
-        \item \(V\) und \(E\) sind endlich.
-        \item Azyklisch \& zusammenhängend (\say{maximal azyklisch}).
+        \item Graph \(G = (V, E)\) mit \(\abs{V}\) Knoten und \(\abs{E}\) Kanten
+        \item \(V\) und \(E\) sind endlich
+        \item Azyklisch \& zusammenhängend (\say{maximal azyklisch})
     \end{itemize}
     \item Sogar ein Binärbaum! \begin{itemize}
-        \item Jeder Knoten hat maximal zwei Nachfolger.
-        \item Wir konzentrieren uns auf ausgewogene.
+        \item Jeder Knoten hat maximal zwei Nachfolger
+        \item Wir konzentrieren uns auf ausgewogene
     \end{itemize}
-    \item Bäume lassen sich als rekursive Struktur auffassen.
+    \item Bäume lassen sich als rekursive Struktur auffassen
 \end{itemize}
 \begin{tikzpicture}[overlay,remember picture]
     \onslide<9->{%
@@ -108,8 +108,8 @@
 \centering\onslide<2->{\usebox\pinguA}\onslide<3->{\qquad\raisebox{.5\ht\pinguA}{\tikz[baseline=-.6ex]{\draw[gray,ultra thick,-Kite] (0,0) -- (.75,0);}}\qquad\heap{[4[3][2]]}}
 \vspace*{3em}
 \begin{itemize}
-    \item<4-> \textit{Up}-Heapify: Prüft Blätter \(\to\) Wurzel.
-    \item<5-> \textit{Down}-Heapify: Prüft Wurzel \(\to\) Blätter.
+    \item<4-> \textit{Up}-Heapify: Prüft Blätter \(\to\) Wurzel
+    \item<5-> \textit{Down}-Heapify: Prüft Wurzel \(\to\) Blätter
 \end{itemize}
 \begin{tikzpicture}[remember picture,overlay]
     \onslide<6->{%
@@ -127,8 +127,8 @@
 \begin{frame}{Insert\,/\,Put}
 \begin{itemize}
     \itemsep8pt
-    \item<2-> Auf der niedersten Ebene, so weit links wie möglich.
-    \item<3-> Anschließend: \textit{heapify}.
+    \item<2-> Auf der niedersten Ebene, so weit links wie möglich
+    \item<3-> Anschließend: \textit{heapify}
 \end{itemize}
 \vspace*{3em}\par
 \centering
@@ -146,8 +146,8 @@
 \begin{frame}{Remove\,/\,Get}
 \begin{itemize}
     \itemsep8pt
-    \item<2-> \vphantom{g}Ersetze oberstes Element durch \say{letztes}.
-    \item<3-> Anschließend: \textit{heapify}.
+    \item<2-> \vphantom{g}Ersetze oberstes Element durch \say{letztes}
+    \item<3-> Anschließend: \textit{heapify}
 \end{itemize}
 \vspace*{3em}\par
 \centering
@@ -179,10 +179,10 @@
 \begin{columns}[c]
 \begin{column}{.55\linewidth}
 \footnotesize\begin{itemize}
-    \item<5-> Jede gefüllte Ebene \(i\) enthält \(2^i\) Elemente.
+    \item<5-> Jede gefüllte Ebene \(i\) enthält \(2^i\) Elemente
     \item<6-> Die Nummerierung nach Breitendurchlauf erlaubt Adressierung!
-    \item<8-> Das linke Kind von \(n\) ist \(2 \cdot n + 1\), das rechte Kind \(2 \cdot n + 2\).
-    \item<9-> Der Elternknoten von \(n\) ist \(\lfloor \frac{n - 1}{2}\rfloor\).
+    \item<8-> Das linke Kind von \(n\) ist \(2 \cdot n + 1\), das rechte Kind \(2 \cdot n + 2\)
+    \item<9-> Der Elternknoten von \(n\) ist \(\lfloor \frac{n - 1}{2}\rfloor\)
 \end{itemize}
 \end{column}
 \begin{column}{.35\linewidth}
@@ -213,7 +213,7 @@
 \begin{columns}[c]
 \begin{column}{.55\linewidth}
 \begin{itemize}
-    \item<2-> Heaps sind meist \say{nur} Arrays.
+    \item<2-> Heaps sind meist \say{nur} Arrays
     \item<6-> Hilfsroutinen erlauben die angenehme Arbeit:
 \begin{uncoverenv}<7->
 \lstfs{7}%
@@ -323,7 +323,7 @@ int parent(int n) { return (n - 1) / 2; }
     \begin{itemize}[<+(1)->]
         \itemsep7pt
         \item Visualisiere \textit{insert} \([3, 5, 8, 3, -5, 6]\) (in der Reihenfolge) im \textit{Min}-Heap. Am Besten simultan im Baum und im Array.
-        \item Visualisiere nun das Entfernen, bis der Heap leer ist.\bigskip
+        \item Visualisiere nun das Entfernen, bis der Heap leer ist\bigskip
         \item[\scalebox{.5}{\raisebox{3.66pt}{\paletteA{$\blacksquare$}}}] Bei diesen und anderen Datenstrukturen hilft die \textit{praktische} Auseinandersetzung!
     \end{itemize}
 \end{frame}
